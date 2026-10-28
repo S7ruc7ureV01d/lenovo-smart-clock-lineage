@@ -1,0 +1,85 @@
+# Merged from stock init.mt8167.rc + init.mt8516.rc
+import /init.mt8167.usb.rc
+import /init.connectivity.rc
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug mode=0755
+    # The 4.4 kernel's FunctionFS AIO path panics (ffs_user_copy_worker,
+    # "Accessing user space memory with fs=KERNEL_DS") under Pie's adbd/MTP;
+    # use their non-AIO compat path
+    setprop sys.usb.ffs.aio_compat 1
+
+on fs
+    symlink /dev/block/platform/soc/11120000.mmc /dev/block/platform/bootdevice
+    mount_all /fstab.mt8167
+    swapon_all /fstab.mt8167
+    # bootanimation prefers /oem/media/bootanimation.zip (stock Lenovo logo)
+    # over Lineage's; /oem must stay mounted (somconfig for wmt_loader), so
+    # hide just its media dir
+    mount tmpfs tmpfs /oem/media ro nosuid nodev noexec mode=0755
+
+on post-fs
+    restorecon_recursive /sys/kernel/debug/tracing
+    chmod 0755 /sys/kernel/debug/tracing
+
+    # Display
+    chmod 0660 /dev/graphics/fb0
+    chown system graphics /dev/graphics/fb0
+    chmod 0660 /dev/mtk_disp_mgr
+    chown system graphics /dev/mtk_disp_mgr
+    chmod 0660 /dev/mtkfb_vsync
+    chown system graphics /dev/mtkfb_vsync
+    chmod 0660 /dev/sw_sync
+    chown system graphics /dev/sw_sync
+
+    # M4U
+    chmod 0444 /dev/m4u
+
+    # CMDQ
+    chmod 0644 /dev/mtk_cmdq
+    chown system system /dev/mtk_cmdq
+
+    # DISP
+    chmod 0444 /dev/mtk_disp
+
+    # MDP
+    chmod 0660 /dev/mt-mdp
+    chown system media /dev/mt-mdp
+
+    # SMI
+    chmod 0660 /dev/MTK_SMI
+    chown media media /dev/MTK_SMI
+
+    # ION
+    chmod 0666 /dev/ion
+
+on post-fs-data
+    mkdir /data/nvram 0771 root system
+    mkdir /data/nvram/media 0771 media audio
+
+on boot
+    # Backlight (SGM37603A)
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    # LK leaves it at 1/255 and nothing sets it until system_server is up,
+    # so the boot animation would be invisible
+    write /sys/class/leds/lcd-backlight/brightness 128
+
+on property:vold.decrypt=trigger_restart_min_framework
+    setprop service.nvram_init 0
+    start nvram_daemon
+
+on property:vold.decrypt=trigger_restart_framework
+    setprop service.nvram_init 0
+    start nvram_daemon
+
+service nvram_daemon /vendor/bin/nvram_daemon
+    class main
+    user root
+    group system
+    oneshot
+
+service NvRAMAgent /vendor/bin/nvram_agent_binder
+    class main
+    user system
+    group system

@@ -1,0 +1,15 @@
+# Whitelist: only the port's own files. backup/ and device-info/ hold
+# device-unique keys and identifiers; vendor blobs are proprietary
+# (extract with extract-files.sh); the LineageOS tree comes from repo sync.
+/*
+!/.gitignore
+!/README.md
+!/FINDINGS.md
+!/tools/
+!/kernel/
+!/android/
+/android/*
+!/android/device/
+/android/device/*
+!/android/device/lenovo/
+__pycache__/

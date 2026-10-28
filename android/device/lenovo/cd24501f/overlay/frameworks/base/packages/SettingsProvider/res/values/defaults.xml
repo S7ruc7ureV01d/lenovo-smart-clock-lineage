@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The LineageOS Project
+
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- A clock: stay on while powered -->
+    <integer name="def_screen_off_timeout">1800000</integer>
+    <bool name="def_stay_on_while_plugged_in">true</bool>
+</resources>

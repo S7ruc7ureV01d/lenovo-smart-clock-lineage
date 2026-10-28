@@ -1,0 +1,8 @@
+[
+  {
+    "repository": "deadman96385/android_kernel_lenovo_mt8167s",
+    "target_path": "kernel/lenovo/mt8167s",
+    "branch": "ivy-smart-display",
+    "remote": "github"
+  }
+]

@@ -1,0 +1,9 @@
+# Copy to BoardConfigPartitions.mk and fill in from the device:
+#   fastboot getvar partition-size:system_a
+#   fastboot getvar partition-size:vendor_a
+#   fastboot getvar partition-size:boot_a
+# Or as root: cat /proc/partitions (sizes in KiB). Values are bytes.
+
+BOARD_BOOTIMAGE_PARTITION_SIZE :=
+BOARD_SYSTEMIMAGE_PARTITION_SIZE :=
+BOARD_VENDORIMAGE_PARTITION_SIZE :=

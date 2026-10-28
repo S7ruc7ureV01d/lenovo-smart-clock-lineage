@@ -1,0 +1,15 @@
+# Bring-up: domains exist so init can transition; everything is permissive.
+type nvram_daemon, domain;
+type nvram_daemon_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(nvram_daemon)
+permissive nvram_daemon;
+
+type wmt_loader, domain;
+type wmt_loader_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(wmt_loader)
+permissive wmt_loader;
+
+type thermal_manager, domain;
+type thermal_manager_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(thermal_manager)
+permissive thermal_manager;

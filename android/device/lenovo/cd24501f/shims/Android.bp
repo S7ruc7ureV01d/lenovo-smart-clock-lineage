@@ -1,0 +1,6 @@
+cc_library_shared {
+    name: "libshim_wifi",
+    vendor: true,
+    srcs: ["wifi_hal.cpp"],
+    shared_libs: ["libutils"],
+}

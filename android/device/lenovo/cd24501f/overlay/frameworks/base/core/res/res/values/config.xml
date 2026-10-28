@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The LineageOS Project
+
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Only volume keys: show the on-screen navigation bar -->
+    <bool name="config_showNavigationBar">true</bool>
+
+    <!-- No accelerometer; landscape is set by a fixed rotation (panel is portrait) -->
+    <bool name="config_supportAutoRotation">false</bool>
+
+    <!-- No battery; always on mains power -->
+    <bool name="config_batterySaverSupported">false</bool>
+    <bool name="config_dozeAfterScreenOffByDefault">false</bool>
+
+    <!-- SGM37603A backlight range -->
+    <integer name="config_screenBrightnessSettingMinimum">10</integer>
+    <integer name="config_screenBrightnessSettingMaximum">255</integer>
+    <integer name="config_screenBrightnessSettingDefault">128</integer>
+    <integer name="config_screenBrightnessDim">10</integer>
+
+    <!-- The ALS sensor has no sensors HAL yet (stock used Android Things user drivers) -->
+    <bool name="config_automatic_brightness_available">false</bool>
+
+    <!-- Low RAM -->
+    <bool name="config_enableMultiUserUI">false</bool>
+    <bool name="config_voice_capable">false</bool>
+    <bool name="config_sms_capable">false</bool>
+</resources>

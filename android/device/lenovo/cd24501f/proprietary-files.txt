@@ -1,0 +1,120 @@
+# Lenovo Smart Clock (CD-24501F) proprietary blobs
+# Source: Things/iot_mt8167s_som/mt8167s_som:8.1.0/OIM6.190107.007.A5/5341849:user/release-keys
+#
+# Deliberately NOT extracted (built from source or Android Things only):
+#   audio/drm/boot/configstore/usb/omx HIDL services and impls, wpa_supplicant, hostapd,
+#   vendor.google.iot.keymaster (Things-only), gnss-iot, lowpan, cas, peripheral_io,
+#   libril/libreference-ril/librilutils (no modem), sensors (stock used Things user drivers),
+#   local_time, power.default, audio.primary.default, gralloc.default, toybox applets
+
+# Audio
+vendor/lib/hw/audio.primary.mt8167.so
+vendor/lib/libaudiomap.so
+vendor/lib/libwebrtc_audio_preprocessing.so
+vendor/lib/soundfx/libldnhncr.so
+
+# Bluetooth
+vendor/bin/hw/android.hardware.bluetooth@1.0-service
+vendor/etc/init/android.hardware.bluetooth@1.0-service.rc
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl.so
+vendor/bin/wfbt_wr
+
+# Connectivity (MT7668 Wi-Fi/BT combo)
+vendor/bin/wmt_loader
+vendor/firmware/EEPROM_MT7668.bin
+vendor/firmware/mt7668_patch_e2_hdr.bin
+vendor/firmware/TxPwrLimit_MT76x8.dat
+vendor/firmware/wifi.cfg
+vendor/firmware/WIFI_RAM_CODE2_SDIO_MT7668.bin
+vendor/firmware/WIFI_RAM_CODE_MT7668.bin
+
+# Wi-Fi HAL
+vendor/bin/hw/android.hardware.wifi@1.0-service
+vendor/etc/init/android.hardware.wifi@1.0-service.rc
+vendor/lib/libwifi-hal.so
+vendor/lib/libkeystore-engine-wifi-hidl.so
+vendor/lib/libkeystore-wifi-hidl.so
+
+# Graphics (PowerVR GE8300)
+vendor/firmware/rgx.fw.signed.22.40.54.30
+vendor/lib/egl/libEGL_mtk.so
+vendor/lib/egl/libGLESv1_CM_mtk.so
+vendor/lib/egl/libGLESv2_mtk.so
+vendor/lib/libIMGegl.so
+vendor/lib/libglslcompiler.so
+vendor/lib/libsrv_um.so
+vendor/lib/libusc.so
+vendor/lib/libPVRScopeServices.so
+vendor/lib/libgpu_aux.so
+vendor/lib/libged.so
+vendor/lib/libOpenCL.so
+vendor/lib/libPVROCL.so
+vendor/lib/hw/vulkan.mt8167.so
+vendor/lib/hw/gralloc.mt8167.so
+vendor/lib/libgralloc_extra.so
+vendor/lib/hw/hwcomposer.mt8167.so
+vendor/lib/libhwc2on1adapter.so
+vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so
+vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so
+vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so
+vendor/bin/hw/android.hardware.graphics.allocator@2.0-service
+vendor/etc/init/android.hardware.graphics.allocator@2.0-service.rc
+vendor/bin/hw/android.hardware.graphics.composer@2.1-service
+vendor/etc/init/android.hardware.graphics.composer@2.1-service.rc
+vendor/lib/libdpframework.so
+vendor/lib/libbwc.so
+vendor/lib/libm4u.so
+vendor/lib/libion_mtk.so
+vendor/lib/libion_ulit.so
+vendor/lib/libdrm.so
+vendor/etc/permissions/android.hardware.opengles.aep.xml
+vendor/etc/permissions/android.hardware.vulkan.level.xml
+vendor/etc/permissions/android.hardware.vulkan.version.xml
+
+# Lights (SGM37603A backlight)
+vendor/bin/hw/android.hardware.light@2.0-service-mediatek
+vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc
+vendor/lib/hw/android.hardware.light@2.0-impl-mediatek.so
+vendor/lib/hw/lights.mt8167.so
+
+# Media (MTK OMX / video codecs)
+vendor/lib/libMtkOmxCore.so
+vendor/lib/libMtkOmxVdecEx.so
+vendor/lib/libMtkOmxVenc.so
+vendor/lib/libstagefrighthw.so
+vendor/lib/libvcodecdrv.so
+vendor/lib/libvcodec_oal.so
+vendor/lib/libvcodec_utility.so
+vendor/lib/libherope_sa.ca7.so
+vendor/lib/libhevce_sb.ca7.android.so
+vendor/lib/libmp4enc_sa.ca7.so
+vendor/lib/libvc1dec_sa.ca7.so
+vendor/lib/libvp8dec_sa.ca7.so
+# vendor/lib/libvp9dec_sa.ca7.so  (needs libmmprofile.so, which stock never shipped)
+
+# Memtrack
+vendor/lib/hw/memtrack.mt8167.so
+vendor/lib/libmemtrack_GL.so
+
+# NVRAM
+vendor/bin/nvram_daemon
+vendor/bin/nvram_agent_binder
+vendor/lib/libnvram.so
+vendor/lib/libcustom_nvram.so
+vendor/lib/libfile_op.so
+vendor/lib/libufwriter.so
+
+# TEE / RPMB / Thermal
+vendor/bin/rpmb_svc
+vendor/etc/init/rpmb_svc.rc
+vendor/lib/libtz_uree.so
+vendor/bin/thermal_manager
+vendor/etc/init/init.thermal_manager.rc
+
+# Touch firmware (FocalTech FT6336U, two panel vendors)
+vendor/firmware/FT6336U_Holitech.bin
+vendor/firmware/FT6336U_KD.bin
+
+# Android Things SoM config (needed by wmt_loader; reads /oem/somconfig/configuration.pb).
+# Links libchrome + libprotobuf-cpp-full from 8.1; replace with a shim if Pie's ABI breaks it.
+lib/libsomconfig.so

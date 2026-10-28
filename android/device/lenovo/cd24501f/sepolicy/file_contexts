@@ -1,0 +1,35 @@
+# Block devices
+/dev/block/platform/soc/11120000\.mmc/by-name/factory   u:object_r:factory_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/oem       u:object_r:oem_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/misc      u:object_r:misc_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/boot_[ab] u:object_r:boot_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/system_[ab] u:object_r:system_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/vendor_[ab] u:object_r:system_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/userdata  u:object_r:userdata_block_device:s0
+/dev/block/platform/soc/11120000\.mmc/by-name/metadata  u:object_r:metadata_block_device:s0
+/dev/block/zram0                                        u:object_r:swap_block_device:s0
+
+# Graphics (PowerVR / MTK display)
+/dev/pvr_sync           u:object_r:gpu_device:s0
+/dev/mtk_disp_mgr       u:object_r:graphics_device:s0
+/dev/mtkfb_vsync        u:object_r:graphics_device:s0
+/dev/m4u                u:object_r:mtk_hw_device:s0
+/dev/mtk_cmdq           u:object_r:mtk_hw_device:s0
+/dev/mt-mdp             u:object_r:mtk_hw_device:s0
+/dev/MTK_SMI            u:object_r:mtk_hw_device:s0
+/dev/Vcodec             u:object_r:mtk_hw_device:s0
+
+# Connectivity (MT7668)
+/dev/stpwmt             u:object_r:mtk_wmt_device:s0
+/dev/wmtdetect          u:object_r:mtk_wmt_device:s0
+/dev/wmtWifi            u:object_r:mtk_wmt_device:s0
+/dev/stpbt              u:object_r:hci_attach_dev:s0
+
+# Vendor binaries
+/(vendor|system/vendor)/bin/nvram_daemon        u:object_r:nvram_daemon_exec:s0
+/(vendor|system/vendor)/bin/nvram_agent_binder  u:object_r:nvram_daemon_exec:s0
+/(vendor|system/vendor)/bin/wmt_loader          u:object_r:wmt_loader_exec:s0
+/(vendor|system/vendor)/bin/thermal_manager     u:object_r:thermal_manager_exec:s0
+
+# Data
+/data/nvram(/.*)?       u:object_r:nvram_data_file:s0

@@ -1,0 +1,6 @@
+type oem_block_device, dev_type;
+type factory_block_device, dev_type;
+type mtk_hw_device, dev_type;
+type mtk_wmt_device, dev_type;
+type factoryfs, fs_type;
+type nvram_data_file, file_type, data_file_type;
