@@ -12,7 +12,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/go_defaults.mk)
 PRODUCT_SHIPPING_API_LEVEL := 27
 
 # Screen: the panel is natively 480x800 portrait; stock rotates it to landscape
-# in the window manager (rotation 1). First boot will come up in portrait.
+# in the window manager (rotation 1), and so do we (below).
 # 240 dpi matches stock oem.prop; higher drops below Android's minimum size.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -20,6 +20,10 @@ TARGET_SCREEN_WIDTH := 480
 TARGET_SCREEN_HEIGHT := 800
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240
+
+# Fixed landscape (rotation 1, like stock); see init.mt8167.rc
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.demo.rotationlock=true
 
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
 

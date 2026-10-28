@@ -8,7 +8,7 @@
     <!-- Only volume keys: show the on-screen navigation bar -->
     <bool name="config_showNavigationBar">true</bool>
 
-    <!-- No accelerometer; landscape is set by a fixed rotation (panel is portrait) -->
+    <!-- No accelerometer; landscape comes from persist.demo.rotationlock (panel is portrait) -->
     <bool name="config_supportAutoRotation">false</bool>
 
     <!-- No battery; always on mains power -->

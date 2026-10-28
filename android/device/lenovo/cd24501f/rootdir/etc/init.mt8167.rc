@@ -68,6 +68,13 @@ on boot
     # so the boot animation would be invisible
     write /sys/class/leds/lcd-backlight/brightness 128
 
+# Landscape like stock (panel is natively portrait): persist.demo.rotationlock
+# pins every window, keyguard included, to the landscape rotation. Pie skips
+# computing the rotation while the display comes up at boot and nothing
+# re-triggers it (no rotation sensor), so poke it once boot completes.
+on property:sys.boot_completed=1
+    exec_background - system system -- /system/bin/settings put system user_rotation 1
+
 on property:vold.decrypt=trigger_restart_min_framework
     setprop service.nvram_init 0
     start nvram_daemon
