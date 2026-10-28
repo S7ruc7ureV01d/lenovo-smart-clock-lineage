@@ -4,6 +4,12 @@ LineageOS 16.0 (Android 9) on the Lenovo Smart Clock (MT8167S, 1 GB RAM, stock A
 Display, touch, Wi-Fi, Bluetooth, speaker, volume keys and the mute slider work. See
 [FINDINGS.md](FINDINGS.md) for status, hardware details and porting notes.
 
+<p align="center">
+  <img src="docs/images/home.jpg" width="32%" alt="Home screen in landscape">
+  <img src="docs/images/about.jpg" width="32%" alt="About phone: Android 9, LineageOS 16.0">
+  <img src="docs/images/lineage-logo.jpg" width="32%" alt="LineageOS logo">
+</p>
+
 Requires an unlocked bootloader and AVB. It installs to slot B and leaves stock on slot A.
 
 ## Layout
