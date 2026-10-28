@@ -31,7 +31,8 @@
 #define GPIO_ADC_RESET (387 + 24)
 #define GPIO_VOLUME_UP (387 + 42)
 #define GPIO_VOLUME_DOWN 576
-/* Back slider; high = muted (stock GpioMicObserver, active high) */
+/* Back slider; low = muted (checked on the device; the stock
+ * GpioMicObserver config suggests the opposite) */
 #define GPIO_MIC_MUTE (387 + 23)
 
 #define AMP_I2C_BUS "/dev/i2c-2"
@@ -192,7 +193,7 @@ int main(void) {
 
     gpio_setup(GPIO_MIC_MUTE, "in");
     int mute_fd = gpio_open_value(GPIO_MIC_MUTE);
-    int muted = gpio_read(mute_fd) == 1;
+    int muted = gpio_read(mute_fd) == 0;
     int mute_changed_us = -1;
     mic_set_muted(muted);
 
@@ -242,7 +243,7 @@ int main(void) {
         }
 
         /* Mute slider, debounced like the stock app (200 ms) */
-        int m = gpio_read(mute_fd) == 1;
+        int m = gpio_read(mute_fd) == 0;
         if (m != muted) {
             if (mute_changed_us < 0) mute_changed_us = 0;
             mute_changed_us += KEY_POLL_US;
