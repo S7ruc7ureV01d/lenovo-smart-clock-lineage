@@ -33,7 +33,6 @@ vendor/firmware/WIFI_RAM_CODE_MT7668.bin
 
 # Wi-Fi HAL
 vendor/bin/hw/android.hardware.wifi@1.0-service
-vendor/etc/init/android.hardware.wifi@1.0-service.rc
 vendor/lib/libwifi-hal.so
 vendor/lib/libkeystore-engine-wifi-hidl.so
 vendor/lib/libkeystore-wifi-hidl.so

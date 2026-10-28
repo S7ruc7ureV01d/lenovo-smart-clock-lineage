@@ -1,0 +1,7 @@
+# Stock's rc (from the 8.1 blobs) has no capabilities, so the HAL can't
+# bring wlan0 up; same as AOSP's
+service wifi_hal_legacy /vendor/bin/hw/android.hardware.wifi@1.0-service
+    class hal
+    capabilities NET_ADMIN NET_RAW SYS_MODULE
+    user wifi
+    group wifi gps

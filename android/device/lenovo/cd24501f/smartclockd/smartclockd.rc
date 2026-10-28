@@ -1,0 +1,4 @@
+service smartclockd /vendor/bin/smartclockd
+    class core
+    user root
+    group root input
