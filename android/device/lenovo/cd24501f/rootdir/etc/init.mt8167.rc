@@ -17,6 +17,9 @@ on fs
     # over Lineage's; /oem must stay mounted (somconfig for wmt_loader), so
     # hide just its media dir
     mount tmpfs tmpfs /oem/media ro nosuid nodev noexec mode=0755
+    # The Android Things OEM app (sparrow.oem) needs the Things framework and
+    # crash-loops on Lineage
+    mount tmpfs tmpfs /oem/app ro nosuid nodev noexec mode=0755
 
 on post-fs
     restorecon_recursive /sys/kernel/debug/tracing

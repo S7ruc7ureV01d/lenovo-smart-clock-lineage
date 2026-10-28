@@ -1,8 +1,8 @@
 diff --git a/libs/hwui/Android.bp b/libs/hwui/Android.bp
-index cb260b5b4b9..47d00816161 100644
+index cb260b5b4b9..48b0eaafb5c 100644
 --- a/libs/hwui/Android.bp
 +++ b/libs/hwui/Android.bp
-@@ -284,10 +284,9 @@ cc_library {
+@@ -284,11 +284,12 @@ cc_library {
      defaults: [
          "libhwui_defaults",
  
@@ -12,7 +12,10 @@ index cb260b5b4b9..47d00816161 100644
 -        "hwui_enable_opengl_validation",
 +        // GLES validation disabled: the 8.1 PowerVR GE8300 driver raises a
 +        // spurious GL_INVALID_ENUM from glFinish() in OpenGLReadback, which
-+        // the error-check wrapper turns into a system_server abort
++        // the error-check wrapper turns into a system_server abort. The
++        // per-frame GL_CHECKPOINTs abort on the same stray errors.
      ],
++    cflags: ["-DDEBUG_OPENGL=0"],
  }
  
+ // ------------------------
