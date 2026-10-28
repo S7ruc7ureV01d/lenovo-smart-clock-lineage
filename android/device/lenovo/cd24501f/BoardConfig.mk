@@ -6,11 +6,8 @@
 
 DEVICE_PATH := device/lenovo/cd24501f
 
-# Partition sizes come from the device itself (fastboot getvar all)
--include $(DEVICE_PATH)/BoardConfigPartitions.mk
-ifeq ($(BOARD_SYSTEMIMAGE_PARTITION_SIZE),)
-$(error Create $(DEVICE_PATH)/BoardConfigPartitions.mk from BoardConfigPartitions.mk.example first)
-endif
+# Partition sizes, read from the device
+include $(DEVICE_PATH)/BoardConfigPartitions.mk
 
 # Architecture: arm64 kernel, 32-bit-only userspace (same as stock)
 TARGET_ARCH := arm
