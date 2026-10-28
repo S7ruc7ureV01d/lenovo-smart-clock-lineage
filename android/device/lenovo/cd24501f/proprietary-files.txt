@@ -18,6 +18,9 @@ vendor/bin/hw/android.hardware.bluetooth@1.0-service
 vendor/etc/init/android.hardware.bluetooth@1.0-service.rc
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl.so
 vendor/bin/wfbt_wr
+# Stock keeps these in /system/lib; the HAL impl dlopens libbt-vendor.so
+lib/libbluetooth_mtk.so
+lib/libbt-vendor.so
 
 # Connectivity (MT7668 Wi-Fi/BT combo)
 vendor/bin/wmt_loader
